@@ -27,6 +27,19 @@ Who uses esdoc-archive ?
 The ES-DOC stack.
 
 
+Quick Extraction 
+--------------------------------------
+```bash
+cat docs_* > combined.tar.gz
+mkdir -p extracted_docs
+tar zxf combined.tar.gz -C extracted_docs
+
+find extracted_docs/ -type f -name "*.json" -exec sh -c 'jq --indent 4 . "$1" > "$1.tmp" && mv "$1.tmp" "$1"' _ {} \;
+```
+
+
+
+
 Further Information ?
 --------------------------------------
 
